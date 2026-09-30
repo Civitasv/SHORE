@@ -8,15 +8,13 @@ The working song title is **NO SHORE**.
 
 ## Current state
 
-Foundation development has started:
-- creative/production specification;
-- full 12-plate treatment;
-- style bible;
-- deterministic browser film engine;
-- provisional 4-minute timeline;
-- first two plates: **BOOT** and **NAMING**.
+The project now has a complete **first-pass provisional 4-minute film**:
+- all 12 plates have dedicated deterministic scenes;
+- no timeline placeholder remains;
+- the point → line → map visual grammar runs from BOOT to NO_SHORE;
+- GitHub Actions validates timeline structure, TypeScript and the production preview build.
 
-The final audio has not been produced yet, so all current scene times are provisional.
+The final song audio has not been produced yet, so scene timing and lyric choreography are intentionally provisional.
 
 ## Preview
 
@@ -28,8 +26,6 @@ bun install
 bun run dev
 ```
 
-Open the Vite URL in a browser.
-
 Controls:
 - Space — play/pause
 - Left/Right — seek ±1 second
@@ -39,7 +35,7 @@ Controls:
 - L — loop current plate
 - H — hide/show transport
 
-You can also open `?t=18&scale=2`. `?export=1` hides the transport for headless rendering.
+You can also open `?t=150&scale=2`. `?export=1` hides the transport for headless rendering.
 
 ## Documents
 
@@ -49,6 +45,8 @@ You can also open `?t=18&scale=2`. `?export=1` hides the transport for headless 
 - `docs/ENGINE.md` — renderer architecture
 - `docs/PRODUCTION.md` — production phases
 - `lyrics/NO_SHORE.md` — working English lyrics
+- `State.md` — implemented and remaining work
+- `Code.md` — repository map
 
 ## Core rule
 
@@ -58,6 +56,6 @@ Every exported frame must be deterministic:
 frame = render(songTime)
 ```
 
-The browser preview and final offline renderer will use the same scene engine.
+The browser preview and final offline renderer use the same scene implementation.
 
 > There is no final shore.

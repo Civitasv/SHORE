@@ -13,7 +13,7 @@
 | Rendering surface | 1920×1080 logical frame | `app/src/engine/surface.ts` |
 | Core frame execution | `render(t)` | `app/src/engine/engine.ts` |
 | Shared draw primitives | low-level Canvas2D | `app/src/engine/draw.ts` |
-| Shared semantic motifs | shore / beacon / field / signal / constellation | `app/src/motifs/` |
+| Shared semantic motifs | shore / beacon / field / signal / graph / constellation | `app/src/motifs/` |
 | Timing data | final song is authoritative | `data/` |
 | CI | GitHub Actions | `.github/workflows/ci.yml` |
 
@@ -35,18 +35,18 @@ Scenes may consume shared engine/motif APIs. Shared engine/motif code must not d
 
 ## Current scene state
 
-Implemented:
+All 12 provisional plates have dedicated scene implementations:
 - BOOT
 - NAMING
 - FIRE
 - HORIZON
 - ESCAPE
+- MACHINE
+- ATLAS
 - LANTERN
 - SILENCE
 - ANSWER
 - SEA
 - NO_SHORE
 
-Development placeholders:
-- MACHINE
-- ATLAS
+`placeholder.ts` remains only as a development fallback and is not referenced by the timeline.

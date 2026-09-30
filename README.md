@@ -8,11 +8,12 @@ The working song title is **NO SHORE**.
 
 ## Current state
 
-The project now has a complete **first-pass provisional 4-minute film**:
+The project has a complete **first-pass provisional 4-minute film**:
 - all 12 plates have dedicated deterministic scenes;
 - no timeline placeholder remains;
 - the point → line → map visual grammar runs from BOOT to NO_SHORE;
-- GitHub Actions validates timeline structure, TypeScript and the production preview build.
+- GitHub Actions validates timeline structure, TypeScript and the production preview build;
+- a separate manual Render Review workflow produces plate/cut/ending contact sheets for visual review.
 
 The final song audio has not been produced yet, so scene timing and lyric choreography are intentionally provisional.
 
@@ -37,6 +38,22 @@ Controls:
 
 You can also open `?t=150&scale=2`. `?export=1` hides the transport for headless rendering.
 
+## Review sheets
+
+With Google Chrome installed:
+
+```sh
+cd app
+bun run render:review
+```
+
+This writes:
+- `out/review/plates.png` — one representative frame per plate;
+- `out/review/cuts.png` — T−100 ms, T−1 frame, T+1 frame, T+100 ms around every scene boundary;
+- `out/review/ending.png` — denser coverage of LANTERN through NO_SHORE.
+
+The same renderer is available as the **Render Review** manual GitHub Actions workflow and uploads the sheets as an artifact.
+
 ## Documents
 
 - `docs/SPEC.md` — creative and production specification
@@ -56,6 +73,6 @@ Every exported frame must be deterministic:
 frame = render(songTime)
 ```
 
-The browser preview and final offline renderer use the same scene implementation.
+The browser preview and offline review renderer use the same scene implementation.
 
 > There is no final shore.

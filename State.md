@@ -2,7 +2,7 @@
 
 ## Product state
 
-SHORE now has a complete first-pass, four-minute provisional film from BOOT through NO_SHORE. Every timeline plate has a dedicated deterministic scene implementation.
+SHORE has a complete first-pass, four-minute provisional film from BOOT through NO_SHORE. Every timeline plate has a dedicated deterministic scene implementation.
 
 Working song: **NO SHORE**  
 Core line: **Our destination is the sea of stars.**
@@ -19,13 +19,17 @@ Core line: **Our destination is the sea of stars.**
 - BOOT → NAMING → FIRE → HORIZON → ESCAPE first-act chain;
 - MACHINE → ATLAS human-machine co-navigation middle act;
 - LANTERN → SILENCE → ANSWER → SEA → NO_SHORE ending arc;
+- plate contact-sheet renderer;
+- four-frame-per-boundary cut-sheet renderer;
+- critical ending review sheet;
+- manual GitHub Actions Render Review artifact workflow;
 - timeline structural validation;
 - GitHub Actions CI and PR evidence workflow.
 
 ## Architecture baseline
 
 - every exported frame is determined by film time and committed data;
-- preview and export share scene code;
+- preview and review render use the same scene code;
 - 1920×1080 is the authored logical space;
 - higher-resolution output scales physical rendering rather than upscaling a 1080p bitmap;
 - point → line → map is the primary visual grammar;
@@ -47,17 +51,16 @@ Core line: **Our destination is the sea of stars.**
 - replace provisional scene timings with lyric/beat anchors.
 
 ### Engine / production quality
+- full offline video renderer with FFmpeg;
 - WebGL/Three.js layer where 3D depth materially improves a plate;
 - lyric-path system;
 - post stack;
-- temporal supersampling;
-- Playwright/FFmpeg offline renderer;
-- still/contact-sheet/cut-sheet render modes.
+- temporal supersampling.
 
 ### Visual review / polish
-- render representative stills for every plate;
+- run Render Review and inspect every representative frame;
 - review every boundary at T−100 ms / T−1 frame / T+1 frame / T+100 ms;
 - refine choreography, typography hierarchy, exposure and motion after the final audio exists;
 - remove any transition that does not read as a semantic morph.
 
-There are no timeline placeholders remaining. The next blocking creative asset is the actual song.
+There are no timeline placeholders remaining. The next blocking creative asset is the actual song, while visual review can continue in parallel through the review-sheet workflow.

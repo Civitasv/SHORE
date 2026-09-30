@@ -17,25 +17,28 @@ declare global {
   }
 }
 
-const canvas = document.querySelector<HTMLCanvasElement>('#film');
-const playButton = document.querySelector<HTMLButtonElement>('#play');
-const scrub = document.querySelector<HTMLInputElement>('#scrub');
-const sceneLabel = document.querySelector<HTMLElement>('#scene');
-const timeLabel = document.querySelector<HTMLElement>('#time');
-const transport = document.querySelector<HTMLElement>('#transport');
-
-if (!canvas || !playButton || !scrub || !sceneLabel || !timeLabel || !transport) {
-  throw new Error('SHORE preview DOM is incomplete');
+function required<T extends Element>(selector: string): T {
+  const element = document.querySelector<T>(selector);
+  if (!element) throw new Error(`SHORE preview is missing ${selector}`);
+  return element;
 }
 
-const scale = Math.max(1, Math.round(Number(new URLSearchParams(location.search).get('scale') ?? 1)));
-const exportMode = new URLSearchParams(location.search).get('export') === '1';
+const canvas = required<HTMLCanvasElement>('#film');
+const playButton = required<HTMLButtonElement>('#play');
+const scrub = required<HTMLInputElement>('#scrub');
+const sceneLabel = required<HTMLElement>('#scene');
+const timeLabel = required<HTMLElement>('#time');
+const transport = required<HTMLElement>('#transport');
+
+const params = new URLSearchParams(location.search);
+const scale = Math.max(1, Math.round(Number(params.get('scale') ?? 1)));
+const exportMode = params.get('export') === '1';
 
 const surface = new FilmSurface(canvas, scale);
 const engine = new FilmEngine(surface, timeline);
 await engine.prepare();
 
-let t = Math.max(0, Math.min(engine.duration, Number(new URLSearchParams(location.search).get('t') ?? 0)));
+let t = Math.max(0, Math.min(engine.duration, Number(params.get('t') ?? 0)));
 let playing = false;
 let looping = false;
 let lastNow = performance.now();
@@ -124,9 +127,7 @@ window.addEventListener('keydown', (event) => {
     return;
   }
 
-  if (key === 'h') {
-    transport.classList.toggle('hidden');
-  }
+  if (key === 'h') transport.classList.toggle('hidden');
 });
 
 window.__shore = {

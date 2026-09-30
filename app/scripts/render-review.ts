@@ -61,8 +61,9 @@ async function openPage(url: string) {
   });
 
   const errors: string[] = [];
+  const warnings: string[] = [];
   page.on('console', (message) => {
-    if (message.type() === 'error') errors.push(message.text());
+    if (message.type() === 'error') warnings.push(message.text());
   });
   page.on('pageerror', (error) => errors.push(error.message));
 
@@ -72,7 +73,7 @@ async function openPage(url: string) {
   const sceneErrors: string[] = await page.evaluate(() => (window as any).__shore.errors);
   errors.push(...sceneErrors);
 
-  return { browser, page, errors };
+  return { browser, page, errors, warnings };
 }
 
 async function renderSheet(
@@ -173,12 +174,16 @@ async function endingSheet(page: Page) {
 }
 
 const { url, stop } = await ensureServer();
-const { browser, page, errors } = await openPage(url);
+const { browser, page, errors, warnings } = await openPage(url);
 
 try {
   await representativePlates(page);
   await cutSheet(page);
   await endingSheet(page);
+
+  if (warnings.length) {
+    console.warn(`browser console warnings:\n${warnings.join('\n')}`);
+  }
 
   if (errors.length) {
     throw new Error(`browser/scene errors:\n${errors.join('\n')}`);

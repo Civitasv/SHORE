@@ -4,7 +4,7 @@
 | --- | --- | --- |
 | Creative thesis / production constraints | `docs/SPEC.md` | whole project |
 | Plate-by-plate direction | `docs/TREATMENT.md` | `app/src/scenes/` |
-| Visual language | `docs/STYLE_BIBLE.md` | palette, drawing and future motif modules |
+| Visual language | `docs/STYLE_BIBLE.md` | `app/src/motifs/`, palette and draw primitives |
 | Engine architecture | `docs/ENGINE.md` | `app/src/engine/` |
 | Production sequencing | `docs/PRODUCTION.md` | project workflow |
 | Song text | `lyrics/NO_SHORE.md` | future aligned lyric data |
@@ -12,7 +12,8 @@
 | Film transport / export bridge | deterministic preview | `app/src/main.ts` |
 | Rendering surface | 1920×1080 logical frame | `app/src/engine/surface.ts` |
 | Core frame execution | `render(t)` | `app/src/engine/engine.ts` |
-| Shared draw primitives | style bible | `app/src/engine/draw.ts` |
+| Shared draw primitives | low-level Canvas2D | `app/src/engine/draw.ts` |
+| Shared semantic motifs | point / field / signal | `app/src/motifs/` |
 | Timing data | final song is authoritative | `data/` |
 | CI | GitHub Actions | `.github/workflows/ci.yml` |
 
@@ -30,13 +31,16 @@ creative + engine contracts
  preview/export bridge
 ```
 
-Scenes may consume shared engine/motif APIs. Shared engine code must not depend on a specific scene.
+Scenes may consume shared engine/motif APIs. Shared engine/motif code must not depend on a specific scene.
 
 ## Current scene state
 
 Implemented:
 - BOOT
 - NAMING
+- LANTERN
+- SILENCE
+- ANSWER
 
 Development placeholders:
 - FIRE
@@ -44,8 +48,5 @@ Development placeholders:
 - ESCAPE
 - MACHINE
 - ATLAS
-- LANTERN
-- SILENCE
-- ANSWER
 - SEA
 - NO_SHORE

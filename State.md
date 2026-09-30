@@ -15,9 +15,14 @@ Core line: **Our destination is the sea of stars.**
 - scene loading with diagnostic fallback;
 - play/pause, seek, frame-step, plate navigation and loop controls;
 - browser export/debug bridge through `window.__shore`;
+- shared semantic motifs for beacon, coordinate field and signal pulse;
 - BOOT plate;
 - NAMING plate;
+- LANTERN plate;
+- SILENCE plate;
+- ANSWER plate;
 - semantic BOOT → NAMING visual handoff;
+- semantic LANTERN → SILENCE → ANSWER sequence;
 - timeline structural validation;
 - GitHub Actions CI and PR evidence workflow.
 
@@ -44,7 +49,7 @@ Core line: **Our destination is the sea of stars.**
 - committed `data/lyrics.json` and `data/audio.json`.
 
 ### Engine
-- shared motif library;
+- expand shared motif library;
 - WebGL/Three.js layer;
 - lyric-path system;
 - post stack;
@@ -58,10 +63,7 @@ Core line: **Our destination is the sea of stars.**
 - ESCAPE
 - MACHINE
 - ATLAS
-- LANTERN
-- SILENCE
-- ANSWER
 - SEA
 - NO_SHORE
 
-The first emotionally critical prototype after foundation should be **LANTERN → SILENCE → ANSWER**.
+The critical LANTERN → SILENCE → ANSWER prototype now exists. The next high-value visual dependency is **SEA**, which should grow directly from ANSWER's two connected beacons without revealing generic star-field spectacle too early.

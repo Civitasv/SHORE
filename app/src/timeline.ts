@@ -10,9 +10,9 @@ export const timeline: TimelineEntry[] = [
   { id: 'escape', start: 70, end: 92, load: scene('placeholder') },
   { id: 'machine', start: 92, end: 122, load: scene('placeholder') },
   { id: 'atlas', start: 122, end: 150, load: scene('placeholder') },
-  { id: 'lantern', start: 150, end: 175, load: scene('placeholder') },
-  { id: 'silence', start: 175, end: 195, load: scene('placeholder') },
-  { id: 'answer', start: 195, end: 205, load: scene('placeholder') },
+  { id: 'lantern', start: 150, end: 175, load: scene('lantern') },
+  { id: 'silence', start: 175, end: 195, load: scene('silence') },
+  { id: 'answer', start: 195, end: 205, load: scene('answer') },
   { id: 'sea', start: 205, end: 228, load: scene('placeholder') },
   { id: 'no-shore', start: 228, end: 240, load: scene('placeholder') },
 ];

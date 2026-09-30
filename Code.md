@@ -13,7 +13,7 @@
 | Rendering surface | 1920×1080 logical frame | `app/src/engine/surface.ts` |
 | Core frame execution | `render(t)` | `app/src/engine/engine.ts` |
 | Shared draw primitives | low-level Canvas2D | `app/src/engine/draw.ts` |
-| Shared semantic motifs | point / field / signal | `app/src/motifs/` |
+| Shared semantic motifs | beacon / field / signal / constellation | `app/src/motifs/` |
 | Timing data | final song is authoritative | `data/` |
 | CI | GitHub Actions | `.github/workflows/ci.yml` |
 
@@ -41,6 +41,8 @@ Implemented:
 - LANTERN
 - SILENCE
 - ANSWER
+- SEA
+- NO_SHORE
 
 Development placeholders:
 - FIRE
@@ -48,5 +50,3 @@ Development placeholders:
 - ESCAPE
 - MACHINE
 - ATLAS
-- SEA
-- NO_SHORE

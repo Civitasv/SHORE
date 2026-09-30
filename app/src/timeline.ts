@@ -13,8 +13,8 @@ export const timeline: TimelineEntry[] = [
   { id: 'lantern', start: 150, end: 175, load: scene('lantern') },
   { id: 'silence', start: 175, end: 195, load: scene('silence') },
   { id: 'answer', start: 195, end: 205, load: scene('answer') },
-  { id: 'sea', start: 205, end: 228, load: scene('placeholder') },
-  { id: 'no-shore', start: 228, end: 240, load: scene('placeholder') },
+  { id: 'sea', start: 205, end: 228, load: scene('sea') },
+  { id: 'no-shore', start: 228, end: 240, load: scene('no-shore') },
 ];
 
 export const PROVISIONAL_DURATION = timeline.at(-1)!.end;

@@ -15,14 +15,16 @@ Core line: **Our destination is the sea of stars.**
 - scene loading with diagnostic fallback;
 - play/pause, seek, frame-step, plate navigation and loop controls;
 - browser export/debug bridge through `window.__shore`;
-- shared semantic motifs for beacon, coordinate field and signal pulse;
+- shared semantic motifs for beacon, coordinate field, signal pulse and constellation;
 - BOOT plate;
 - NAMING plate;
 - LANTERN plate;
 - SILENCE plate;
 - ANSWER plate;
+- SEA plate;
+- NO_SHORE plate;
 - semantic BOOT → NAMING visual handoff;
-- semantic LANTERN → SILENCE → ANSWER sequence;
+- complete provisional ending arc: LANTERN → SILENCE → ANSWER → SEA → NO_SHORE;
 - timeline structural validation;
 - GitHub Actions CI and PR evidence workflow.
 
@@ -33,7 +35,7 @@ Core line: **Our destination is the sea of stars.**
 - 1920×1080 is the authored logical space;
 - higher-resolution output scales physical rendering rather than upscaling a 1080p bitmap;
 - point → line → map is the primary visual grammar;
-- full star-field spectacle is reserved for the late-film payoff;
+- the full star field is withheld until SEA;
 - final song timing will replace provisional seconds.
 
 ## Remaining work
@@ -49,7 +51,6 @@ Core line: **Our destination is the sea of stars.**
 - committed `data/lyrics.json` and `data/audio.json`.
 
 ### Engine
-- expand shared motif library;
 - WebGL/Three.js layer;
 - lyric-path system;
 - post stack;
@@ -63,7 +64,5 @@ Core line: **Our destination is the sea of stars.**
 - ESCAPE
 - MACHINE
 - ATLAS
-- SEA
-- NO_SHORE
 
-The critical LANTERN → SILENCE → ANSWER prototype now exists. The next high-value visual dependency is **SEA**, which should grow directly from ANSWER's two connected beacons without revealing generic star-field spectacle too early.
+The ending arc is now present end-to-end. The next production focus should be the first-act scale change **FIRE → HORIZON → ESCAPE**, followed by the middle human-machine pair **MACHINE → ATLAS**.

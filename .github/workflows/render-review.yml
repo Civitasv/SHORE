@@ -2,6 +2,15 @@ name: Render Review
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'app/src/scenes/**'
+      - 'app/src/motifs/**'
+      - 'app/src/timeline.ts'
+      - 'app/scripts/render-review.ts'
+      - '.github/workflows/render-review.yml'
 
 permissions:
   contents: read

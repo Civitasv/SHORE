@@ -13,7 +13,7 @@
 | Rendering surface | 1920×1080 logical frame | `app/src/engine/surface.ts` |
 | Core frame execution | `render(t)` | `app/src/engine/engine.ts` |
 | Shared draw primitives | low-level Canvas2D | `app/src/engine/draw.ts` |
-| Shared semantic motifs | beacon / field / signal / constellation | `app/src/motifs/` |
+| Shared semantic motifs | shore / beacon / field / signal / constellation | `app/src/motifs/` |
 | Timing data | final song is authoritative | `data/` |
 | CI | GitHub Actions | `.github/workflows/ci.yml` |
 
@@ -38,6 +38,9 @@ Scenes may consume shared engine/motif APIs. Shared engine/motif code must not d
 Implemented:
 - BOOT
 - NAMING
+- FIRE
+- HORIZON
+- ESCAPE
 - LANTERN
 - SILENCE
 - ANSWER
@@ -45,8 +48,5 @@ Implemented:
 - NO_SHORE
 
 Development placeholders:
-- FIRE
-- HORIZON
-- ESCAPE
 - MACHINE
 - ATLAS

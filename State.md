@@ -15,15 +15,18 @@ Core line: **Our destination is the sea of stars.**
 - scene loading with diagnostic fallback;
 - play/pause, seek, frame-step, plate navigation and loop controls;
 - browser export/debug bridge through `window.__shore`;
-- shared semantic motifs for beacon, coordinate field, signal pulse and constellation;
+- shared semantic motifs for shoreline, beacon, coordinate field, signal pulse and constellation;
 - BOOT plate;
 - NAMING plate;
+- FIRE plate;
+- HORIZON plate;
+- ESCAPE plate;
 - LANTERN plate;
 - SILENCE plate;
 - ANSWER plate;
 - SEA plate;
 - NO_SHORE plate;
-- semantic BOOT → NAMING visual handoff;
+- semantic BOOT → NAMING → FIRE → HORIZON → ESCAPE first-act chain;
 - complete provisional ending arc: LANTERN → SILENCE → ANSWER → SEA → NO_SHORE;
 - timeline structural validation;
 - GitHub Actions CI and PR evidence workflow.
@@ -59,10 +62,7 @@ Core line: **Our destination is the sea of stars.**
 - still/contact-sheet/cut-sheet render modes.
 
 ### Plates
-- FIRE
-- HORIZON
-- ESCAPE
 - MACHINE
 - ATLAS
 
-The ending arc is now present end-to-end. The next production focus should be the first-act scale change **FIRE → HORIZON → ESCAPE**, followed by the middle human-machine pair **MACHINE → ATLAS**.
+The only remaining scene placeholders are the human-machine middle act. MACHINE must receive ESCAPE's trajectory; ATLAS must turn its computational graph into the route that LANTERN later strips away.

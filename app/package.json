@@ -7,13 +7,15 @@
     "build": "vite build",
     "typecheck": "tsc --noEmit",
     "check:timeline": "bun scripts/check-timeline.ts",
-    "check": "bun run check:timeline && bun run typecheck && bun run build"
+    "check": "bun run check:timeline && bun run typecheck && bun run build",
+    "render:review": "bun scripts/render-review.ts"
   },
   "dependencies": {
     "three": "0.186.1"
   },
   "devDependencies": {
     "@types/three": "0.186.0",
+    "playwright-core": "1.63.0",
     "typescript": "7.0.2",
     "vite": "8.3.1"
   }

@@ -88,7 +88,13 @@ function drawTechnicalNode(
     return;
   }
 
-  drawOutlineBeacon(g, x, y, { radius: node.kind === 'input' ? 5 : 4, alpha, color: P.bone, halo: P.bone, glow: 4 });
+  drawOutlineBeacon(g, x, y, {
+    radius: node.kind === 'input' ? 5 : 4,
+    alpha,
+    color: P.bone,
+    halo: P.bone,
+    glow: 4,
+  });
 }
 
 export function drawSharedGraph(
@@ -109,28 +115,42 @@ export function drawSharedGraph(
   const labels = options.labels ?? 0;
   const highlight = options.highlightEdges ?? [];
   const pruned = options.prunedEdges ?? [];
+  const baseEdgeAlpha = lerp(0.22, 0.36, technical);
 
   SHARED_GRAPH_EDGES.forEach((edge, i) => {
-    const edgeP = smoothstep(remap(progress, i / SHARED_GRAPH_EDGES.length, (i + 1.7) / SHARED_GRAPH_EDGES.length));
+    const edgeP = smoothstep(
+      remap(progress, i / SHARED_GRAPH_EDGES.length, (i + 1.7) / SHARED_GRAPH_EDGES.length),
+    );
     if (edgeP <= 0) return;
+
     const a = graphPoint(edge.from, scale);
     const b = graphPoint(edge.to, scale);
     const end: [number, number] = [lerp(a[0], b[0], edgeP), lerp(a[1], b[1], edgeP)];
     const hi = highlight.includes(i);
     const cut = pruned.includes(i);
-    line(g, [a, end], alpha * (cut ? 0.11 : hi ? 0.68 : 0.25), hi ? 1.8 : 1.1, hi ? P.star : P.ash);
+
+    line(
+      g,
+      [a, end],
+      alpha * (cut ? 0.14 : hi ? 0.78 : baseEdgeAlpha),
+      hi ? 1.8 : 1.1,
+      hi ? P.star : P.ash,
+    );
 
     if (cut && edgeP > 0.9) {
       const mx = (a[0] + b[0]) / 2;
       const my = (a[1] + b[1]) / 2;
-      line(g, [[mx - 7, my - 7], [mx + 7, my + 7]], alpha * 0.5, 1.2, P.star);
-      line(g, [[mx - 7, my + 7], [mx + 7, my - 7]], alpha * 0.5, 1.2, P.star);
+      line(g, [[mx - 7, my - 7], [mx + 7, my + 7]], alpha * 0.58, 1.2, P.star);
+      line(g, [[mx - 7, my + 7], [mx + 7, my - 7]], alpha * 0.58, 1.2, P.star);
     }
   });
 
   SHARED_GRAPH_NODES.forEach((node, i) => {
-    const nodeP = smoothstep(remap(progress, i / SHARED_GRAPH_NODES.length, (i + 2) / SHARED_GRAPH_NODES.length));
+    const nodeP = smoothstep(
+      remap(progress, i / SHARED_GRAPH_NODES.length, (i + 2) / SHARED_GRAPH_NODES.length),
+    );
     if (nodeP <= 0) return;
+
     const [x, y] = graphPoint(i, scale);
 
     if (technical > 0.5) {
@@ -140,7 +160,7 @@ export function drawSharedGraph(
       const fn = outlined ? drawOutlineBeacon : drawBeacon;
       fn(g, x, y, {
         radius: node.kind === 'agent' ? 3.5 : 2.6,
-        alpha: alpha * nodeP * 0.8,
+        alpha: alpha * nodeP * 0.92,
         color: outlined ? P.bone : P.core,
         halo: outlined ? P.bone : P.star,
         glow: outlined ? 4 : 8,
@@ -149,7 +169,14 @@ export function drawSharedGraph(
 
     if (labels > 0) {
       const prefix = technical > 0.5 ? node.kind.toUpperCase() : 'RTE';
-      mono(g, `${prefix} / ${String(i + 1).padStart(2, '0')}`, x + 14, y - 12, 9, alpha * labels * 0.48);
+      mono(
+        g,
+        `${prefix} / ${String(i + 1).padStart(2, '0')}`,
+        x + 14,
+        y - 12,
+        9,
+        alpha * labels * 0.62,
+      );
     }
   });
 }

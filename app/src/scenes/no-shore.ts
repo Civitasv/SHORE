@@ -3,17 +3,32 @@ import { lerp, remap, smoothstep } from '../engine/math';
 import { P } from '../engine/palette';
 import type { Scene } from '../engine/types';
 import { drawBeacon } from '../motifs/beacon';
-import { drawCatalog } from '../motifs/constellation';
+import { drawCatalog, drawConstellation, makeConstellation } from '../motifs/constellation';
+
+const SEA_NODES = makeConstellation(0x53484f52, 42);
 
 const scene: Scene = {
   render(g, ctx) {
     clear(g);
     const t = ctx.localT;
 
+    const carry = 1 - smoothstep(remap(t, 0.0, 3.0));
+    const settle = smoothstep(remap(t, 0.0, 3.0));
     const fieldFade = 1 - smoothstep(remap(t, 5.5, 10.0));
-    drawCatalog(g, 0x4e4f5348, 156, fieldFade * 0.23, 0.9);
+    const fieldAlpha = lerp(0.55, 0.23, settle) * fieldFade;
+    const fieldScale = lerp(0.92, 0.9, settle);
 
-    const panelIn = smoothstep(remap(t, 0.4, 2.0));
+    drawCatalog(g, 0x4e4f5348, 156, fieldAlpha, fieldScale);
+    drawConstellation(g, SEA_NODES, 1, {
+      alpha: 0.94 * carry,
+      scale: 0.76,
+      technical: 0,
+    });
+
+    line(g, [[960, 540], [1810, 486]], 0.18 * carry, 1, P.star);
+    mono(g, 'ONLY DEEPER SEAS OF STARS', 960, 902, 15, 0.78 * carry, P.star, 'center');
+
+    const panelIn = smoothstep(remap(t, 1.0, 2.8));
     const panelOut = 1 - smoothstep(remap(t, 6.2, 8.0));
     const panel = panelIn * panelOut;
 

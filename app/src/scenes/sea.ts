@@ -26,7 +26,8 @@ const scene: Scene = {
     });
 
     const route = 1 - smoothstep(remap(t, 12.0, 18.0));
-    line(g, [[720, 540], [1500, 540]], route * 0.24, 1.2, P.star);
+    const routeAlpha = lerp(0.42, 0.24, smoothstep(remap(t, 0.0, 2.0)));
+    line(g, [[720, 540], [1500, 540]], route * routeAlpha, 1.2, P.star);
 
     const mapLabel = smoothstep(remap(t, 1.0, 3.0)) * technical;
     mono(g, 'ROUTE / 01', 720, 596, 10, mapLabel * 0.48);
@@ -34,9 +35,20 @@ const scene: Scene = {
 
     const nameShift = smoothstep(remap(t, 7.0, 12.0));
     mono(g, 'NAVIGATION GRAPH', 96, 104, 11, (1 - nameShift) * 0.42, P.ash);
-    mono(g, 'CONSTELLATION', 96, 104, 11, nameShift * (1 - smoothstep(remap(t, 16, 20))) * 0.52, P.bone);
+    mono(
+      g,
+      'CONSTELLATION',
+      96,
+      104,
+      11,
+      nameShift * (1 - smoothstep(remap(t, 16, 20))) * 0.52,
+      P.bone,
+    );
 
-    const noLast = smoothstep(remap(t, 11.5, 14.5)) * (1 - smoothstep(remap(t, 18.0, 21.0)));
+    const noLast =
+      smoothstep(remap(t, 11.5, 14.5)) *
+      (1 - smoothstep(remap(t, 18.0, 21.0)));
+
     mono(g, 'THERE IS NO LAST DESTINATION', 960, 902, 15, noLast * 0.66, P.bone, 'center');
 
     const stars = smoothstep(remap(t, 16.0, 21.5));

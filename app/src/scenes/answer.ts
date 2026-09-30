@@ -58,6 +58,10 @@ const scene: Scene = {
     });
 
     const replyProgress = smoothstep(remap(t, 3.5, 7.4));
+    const replyAlpha =
+      smoothstep(remap(t, 3.1, 4.0)) *
+      (1 - smoothstep(remap(t, 8.1, 9.75)));
+
     drawSignalPulse(g, {
       x0: targetX,
       x1: sourceX,
@@ -67,19 +71,25 @@ const scene: Scene = {
       wavelength: 72,
       tail: 0.48,
       phase: 1.32,
-      alpha: smoothstep(remap(t, 3.1, 4.0)),
+      alpha: replyAlpha,
       width: 1.6,
       color: P.core,
     });
 
-    const response = smoothstep(remap(t, 3.1, 4.8)) * (1 - smoothstep(remap(t, 8.4, 9.6)));
+    const response =
+      smoothstep(remap(t, 3.1, 4.8)) *
+      (1 - smoothstep(remap(t, 8.4, 9.6)));
+
     mono(g, 'RESPONSE', targetX, 474, 12, response * 0.76, P.bone, 'center');
     mono(g, 'PHASE SHIFT +0.17', targetX, 498, 10, response * 0.42, P.ash, 'center');
 
-    const connect = smoothstep(remap(t, 7.1, 9.8));
+    const connect = smoothstep(remap(t, 7.1, 9.55));
     line(g, [[sourceX, y], [targetX, y]], connect * 0.42, 1.2, P.star);
 
-    const sentence = smoothstep(remap(t, 5.2, 7.8));
+    const sentence =
+      smoothstep(remap(t, 5.2, 7.8)) *
+      (1 - smoothstep(remap(t, 8.45, 9.8)));
+
     mono(g, 'AND SOMEWHERE, ANOTHER ANSWERS.', 1110, 654, 14, sentence * 0.72, P.bone, 'center');
   },
 };

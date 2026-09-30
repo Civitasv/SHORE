@@ -2,6 +2,7 @@ import { clear, line, mono, point } from '../engine/draw';
 import { lerp, remap, smoothstep } from '../engine/math';
 import { P } from '../engine/palette';
 import type { Scene } from '../engine/types';
+import { shoreY } from '../motifs/shore';
 
 const lights = [
   [1180, 330, 'A-01'],
@@ -12,10 +13,6 @@ const lights = [
   [350, 320, 'A-06'],
 ] as const;
 
-function coastY(x: number) {
-  return 540 + Math.sin(x * 0.007) * 52 + Math.sin(x * 0.017 + 1.3) * 21;
-}
-
 const scene: Scene = {
   render(g, ctx) {
     clear(g);
@@ -24,7 +21,6 @@ const scene: Scene = {
     const cx = 960;
     const cy = 540;
 
-    // Exact visual handoff from BOOT's final trajectory.
     line(g, [[cx, cy], [1300, cy]], 1, 1.5, P.star);
     point(g, 1300, cy, 2.5, 1, 12);
 
@@ -61,9 +57,7 @@ const scene: Scene = {
     const morph = smoothstep(remap(t, 11.0, 18.0));
     if (morph > 0) {
       const pts: [number, number][] = [];
-      for (let x = 300; x <= 1620; x += 18) {
-        pts.push([x, lerp(cy, coastY(x), morph)]);
-      }
+      for (let x = 300; x <= 1620; x += 18) pts.push([x, lerp(cy, shoreY(x), morph)]);
       line(g, pts, 0.85, 1.6, P.star);
       g.save();
       g.globalAlpha = morph;

@@ -4,8 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "typecheck": "tsc --noEmit"
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "check:timeline": "bun scripts/check-timeline.ts",
+    "check": "bun run check:timeline && bun run typecheck && bun run build"
   },
   "dependencies": {
     "three": "0.186.1"
